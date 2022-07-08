@@ -1,23 +1,30 @@
 <script>
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  // const tableExample = [
+  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
+  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
+  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
+  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
+  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
+  // ];
+
+  let table = [new Array(5).fill(null).map((_, index) => ++index)];
 </script>
 
 <main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello world!</h1>
-
-  <Counter />
-
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
+  <div class="container">
+    <h1>Techboard:</h1>
+    <div class="grid">
+      {#each table as row}
+        <div class="row">
+          {#each row as cell}
+            <div class="cell">
+              <span class="cell-content">{cell}</span>
+            </div>
+          {/each}
+        </div>
+      {/each}
+    </div>
+  </div>
 </main>
 
 <style>
@@ -27,39 +34,39 @@
   }
 
   main {
-    text-align: center;
-    padding: 1em;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1080px;
     margin: 0 auto;
   }
 
-  img {
-    height: 16rem;
-    width: 16rem;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    grid-template-areas: 'r r r r r';
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
+  .row {
+    grid-area: r;
+    display: flex;
+    gap: 10px;
   }
 
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
+  .cell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: crimson;
+    min-height: 200px;
+    flex-basis: 100%;
   }
 
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
+  .cell-content {
+    color: white;
+    font-size: 80px;
   }
 </style>
