@@ -1,21 +1,19 @@
 <script>
-  // [
-  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
-  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
-  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
-  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
-  //   ['Beginer', 'Competent', 'Advanced', 'Expert', 'Master'],
-  // ];
-  export let table = [];
+  import Cell from './Cell.svelte';
+
+  export let rows = [];
+  let table = rows.map((item) => [item, null, null, null, null]);
+
+  console.log(table);
 </script>
 
 <div class="grid">
   {#each table as row}
     <div class="row">
-      {#each row as cell}
-        <div class="cell">
-          <span class="cell-content">{cell}</span>
-        </div>
+      {#each row as item, index}
+        <Cell {item}>
+          {index + 1}
+        </Cell>
       {/each}
     </div>
   {/each}
@@ -34,19 +32,5 @@
     grid-area: r;
     display: flex;
     gap: 10px;
-  }
-
-  .cell {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: crimson;
-    min-height: 200px;
-    flex-basis: 100%;
-  }
-
-  .cell-content {
-    color: white;
-    font-size: 80px;
   }
 </style>

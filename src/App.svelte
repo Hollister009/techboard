@@ -1,12 +1,12 @@
 <script>
   import Grid from './lib/Grid.svelte';
-  let table = [new Array(5).fill(null).map((_, index) => ++index)];
+  import rows from './data.json';
 </script>
 
 <main>
   <div class="container">
     <h1>Techboard:</h1>
-    <Grid {table} />
+    <Grid {rows} />
   </div>
 </main>
 
