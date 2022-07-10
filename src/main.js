@@ -1,8 +1,9 @@
-import App from './App.svelte'
+import App from './App.js';
 
-// @ts-ignore
-const app = new App({
-  target: document.getElementById('app')
-})
+const app = document.getElementById('app');
 
-export default app
+const fetchData = async () => {
+  window.data = await fetch('./src/data.json').then((res) => res.json());
+};
+
+App.render(app, fetchData);
