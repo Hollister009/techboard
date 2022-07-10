@@ -5,13 +5,20 @@
   let table = rows.map((item) => [item, null, null, null, null]);
 
   console.log(table);
+
+  const onUpdate = (rowId) => (event) => {
+    const { dropZoneId, item } = event.detail;
+    table[rowId] = table[rowId].map((_, idx) =>
+      idx === dropZoneId ? item : null
+    );
+  };
 </script>
 
 <div class="grid">
-  {#each table as row}
+  {#each table as row, rowIdx}
     <div class="row">
       {#each row as item, index}
-        <Cell {item}>
+        <Cell {item} on:update={onUpdate(rowIdx)}>
           {index + 1}
         </Cell>
       {/each}

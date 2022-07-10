@@ -1,10 +1,22 @@
 <script>
   import Item from './Item.svelte';
 
+  let drop_zone;
   export let item = null;
+
+  function handleDragOver() {}
+  function handleDragLeave() {}
+  function handleDragDrop() {}
 </script>
 
-<div class="cell">
+<div
+  class="cell"
+  id="drop_zone"
+  bind:this={drop_zone}
+  on:dragover={handleDragOver}
+  on:dragleave={handleDragLeave}
+  on:drop={handleDragDrop}
+>
   {#if item}
     <Item {item} />
   {:else}
