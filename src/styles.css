@@ -43,7 +43,22 @@ main {
   flex-basis: 100%;
 }
 
-.cell__inner {
-  color: white;
-  font-size: 80px;
+.item {
+  display: inline-block;
+  background-color: #fff3cc;
+  border: #dfbc6a 1px solid;
+  min-width: 50px;
+  min-height: 50px;
+  margin: 10px;
+  padding: 8px;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 2px 2px 2px #999;
+  cursor: move;
+  color: black;
+  transition: all 0.2s linear;
+}
+
+.hold {
+  border: 2px solid #999;
 }
